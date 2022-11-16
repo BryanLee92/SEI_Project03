@@ -1,0 +1,17 @@
+.track{
+    height: 150px; 
+    width: 150px;
+}
+.font-title{
+    font-size: 50px; 
+    color: blue;
+}
+@media screen and (max-width: 600px){
+    .track{
+        height: 80px; 
+        width: 80px;
+    }
+    .font-title{
+        font-size: 20px; 
+    }
+}

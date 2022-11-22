@@ -8,7 +8,7 @@ export default function useAuth(code) {
 
   useEffect(() => {
     axios
-      .post("https://musicapi.onrender.com/login", {
+      .post("http://localhost:3030/login", {
         code,
       })
       .then(res => {
@@ -26,7 +26,7 @@ export default function useAuth(code) {
     if (!refreshToken || !expiresIn) return
     const interval = setInterval(() => {
       axios
-        .post("https://musicapi.onrender.com/refresh", {
+        .post("http://localhost:3030/refresh", {
           refreshToken,
         })
         .then(res => {

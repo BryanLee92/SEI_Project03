@@ -11,7 +11,7 @@ const musicApi = require('./models/music.js')
 //port
 const PORT = process.env.PORT || 3030;
 
-const mongoURI = process.env.MONGODB_URI || "mongodb+srv://Nudels:mick3ymous@foodie.6p9ujvd.mongodb.net/Music_App"
+const mongoURI = process.env.MONGODB_URI
 const db = mongoose.connection
 mongoose.connect(mongoURI, {useNewUrlParser: true}, ()=>{
     console.log("Connected")
@@ -26,7 +26,10 @@ db.on("disconnect", ()=>{
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: ['http://localhost:3000']
+}))
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -78,6 +81,10 @@ app.post("/login", (req, res) => {
         })
     }
   })
+})
+
+app.get('*', (req, res) => {
+
 })
 
 app.get("/lyrics", async (req, res) => {
